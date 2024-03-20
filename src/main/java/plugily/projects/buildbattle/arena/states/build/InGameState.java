@@ -143,7 +143,8 @@ public class InGameState extends PluginInGameState {
       int points = user.getStatistic("LOCAL_POINTS");
 
       //no vote made, in this case make it a good vote
-      if(points == 0) {
+      boolean noVote = points == 0;
+      if(noVote) {
         points = 3;
       }
       Plot plot = pluginArena.getPlotFromPlayer(player);
@@ -151,6 +152,15 @@ public class InGameState extends PluginInGameState {
         if(!plotsVoted.contains(plot)) {
           votingPlot.addPoints(points);
           plotsVoted.add(plot);
+
+          if (!noVote) {
+            try {
+              user.adjustStatistic("VOTES", 1);
+              user.adjustStatistic("VOTE_" + points, 1);
+            } catch (Exception ex) {
+              ex.printStackTrace();
+            }
+          }
         }
       }
 

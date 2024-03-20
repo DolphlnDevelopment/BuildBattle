@@ -39,6 +39,7 @@ import plugily.projects.buildbattle.handlers.misc.BlacklistManager;
 import plugily.projects.buildbattle.handlers.setup.SetupCategoryManager;
 import plugily.projects.buildbattle.handlers.themes.ThemeManager;
 import plugily.projects.minigamesbox.classic.PluginMain;
+import plugily.projects.minigamesbox.classic.api.StatisticType;
 import plugily.projects.minigamesbox.classic.handlers.setup.SetupInventory;
 import plugily.projects.minigamesbox.classic.handlers.setup.categories.PluginSetupCategoryManager;
 import plugily.projects.minigamesbox.classic.utils.services.metrics.Metrics;
@@ -84,6 +85,15 @@ public class Main extends PluginMain {
     initializePluginClasses();
     getDebugger().debug("Full {0} plugin enabled", getName());
     getDebugger().debug("[System] [Plugin] Initialization finished took {0}ms", System.currentTimeMillis() - start);
+
+    // Pol code
+    this.getStatsStorage().registerStatistic("VOTES", new StatisticType("votes", true, "int(11) NOT NULL DEFAULT '0'", true));
+    this.getStatsStorage().registerStatistic("VOTE_1", new StatisticType("vote_1", true, "int(11) NOT NULL DEFAULT '0'", true));
+    this.getStatsStorage().registerStatistic("VOTE_2", new StatisticType("vote_2", true, "int(11) NOT NULL DEFAULT '0'", true));
+    this.getStatsStorage().registerStatistic("VOTE_3", new StatisticType("vote_3", true, "int(11) NOT NULL DEFAULT '0'", true));
+    this.getStatsStorage().registerStatistic("VOTE_4", new StatisticType("vote_4", true, "int(11) NOT NULL DEFAULT '0'", true));
+    this.getStatsStorage().registerStatistic("VOTE_5", new StatisticType("vote_5", true, "int(11) NOT NULL DEFAULT '0'", true));
+    this.getStatsStorage().registerStatistic("VOTE_6", new StatisticType("vote_6", true, "int(11) NOT NULL DEFAULT '0'", true));
   }
 
   public void initializePluginClasses() {
